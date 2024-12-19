@@ -17,7 +17,9 @@ app.use(express.json())
 app.use('/upload', express.static('upload'))
 app.use('/images', express.static('images'))
 
-app.use(cors()) 
+app.use(cors({
+    origin: 'http://conference.buketov.edu.kz'
+})) 
   
 
 const start = async () => {
