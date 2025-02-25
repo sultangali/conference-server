@@ -23,23 +23,23 @@ export const all = async (req, res) => {
       // Проверяем, существует ли статья
       const article = await Article.findById(id);
       if (!article) {
-        return res.status(404).json({ message: "Статья не найдена" });
+        return res.status(404).json({ message: req.t("server.article.notFound") });
       }
   
       // Проверяем, является ли статус допустимым
       const validStatuses = ["approved", "process", "denied"];
       if (!validStatuses.includes(status)) {
-        return res.status(400).json({ message: "Недопустимый статус" });
+        return res.status(400).json({ message: req.t("server.article.invalidStatus") });
       }
   
       // Обновляем статус статьи
       article.status = status;
       await article.save();
   
-      res.json({ message: "Статус статьи обновлен", article });
+      res.json({ message: req.t("server.article.statusUpdated"), article });
     } catch (error) {
       console.error("Ошибка обновления статуса статьи:", error);
-      res.status(500).json({ message: "Ошибка сервера", error: error.message });
+      res.status(500).json({ message: req.t("server.error"), error: error.message });
     }
   };
   
@@ -74,7 +74,7 @@ export const getProblems = async (req, res) => {
     res.status(200).json(problems);
   } catch (error) {
     console.error("Ошибка получения списка проблем:", error);
-    res.status(500).json({ message: "Ошибка на сервере" });
+    res.status(500).json({ message: req.t("server.error") });
   }
 };
 
@@ -94,7 +94,7 @@ export const createSolveArticle = async (req, res) => {
     const { articleTitle, section, correspondentId, problem, fileUrl, coauthors } = req.body;
     
     if (!articleTitle || !section || !correspondentId || !problem || !fileUrl) {
-      return res.status(400).json({ message: "Все поля обязательны!" });
+      return res.status(400).json({ message: req.t("server.article.allFieldsRequired") });
     }
 
     // 1️⃣ Создаём статью
@@ -114,7 +114,7 @@ export const createSolveArticle = async (req, res) => {
 
     const correspondent = await User.findById(correspondentId);
     if (!correspondent) {
-      return res.status(404).json({ message: "Корреспондент не найден!" });
+      return res.status(404).json({ message: req.t("server.correspondent.notFound") });
     }
     
     if (coauthors && coauthors.length > 0) {
@@ -169,13 +169,13 @@ export const createSolveArticle = async (req, res) => {
 
     // 4️⃣ Возвращаем данные
     return res.status(201).json({
-      message: "Статья успешно создана",
+      message: req.t("server.article.successfullyCreated"),
       article: newArticle,
       coauthors: createdCoauthors,
     });
 
   } catch (error) {
     console.error("Ошибка создания статьи:", error);
-    return res.status(500).json({ message: "Ошибка на сервере", error: error.message });
+    return res.status(500).json({ message: req.t("server.error"), error: error.message });
   }
 };

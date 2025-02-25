@@ -1,0 +1,100 @@
+{
+    "server": {
+        "participation": {
+            "invalidType": "Invalid participation type.",
+            "updated": "Participation form successfully updated",
+            "selected": "You selected:",
+            "types": {
+                "online": "Online",
+                "offline": "Offline",
+                "mixed": "Mixed"
+            }
+        },
+        "participants": {
+            "notFound": "No registered participants found."
+        },
+        "registration": {
+            "emailExists": "A user with this email is already registered.",
+            "success": "Registration successful! Please check your email for confirmation."
+        },
+        "login": {
+            "notFound": "User not found.",
+            "invalidCredentials": "Invalid email or password."
+        },
+        "user": {
+            "notFound": "User not found."
+        },
+        "error": "Server error.",
+        "email": {
+            "welcome": {
+                "title": "Welcome to the KBU Conference!",
+                "verified": "Your account has been successfully verified.",
+                "subject": "Welcome to the KBU Conference!"
+            },
+            "account": "Your account details:",
+            "login": "Login:",
+            "password": "Password:",
+            "loginButton": "Log in to the system",
+            "coauthorsList": "Below is your list of co-authors:",
+            "passwordChangeInfo": "For security reasons, please change your password",
+            "resetPasswordLink": "Change password"
+        },
+        "article": {
+            "notFound": "Article not found",
+            "invalidStatus": "Invalid status",
+            "statusUpdated": "Article status updated",
+            "statusUpdateError": "Error updating article status",
+            "allFieldsRequired": "All fields are required!",
+            "successfullyCreated": "Article successfully created",
+            "createError": "Error creating article"
+        },
+        "correspondent": {
+            "notFound": "Correspondent not found!"
+        },
+        "upload": {
+            "successAvatar": "Avatar uploaded successfully",
+            "errorAvatar": "Error uploading avatar",
+            "noFile": "No file uploaded",
+            "successFile": "File uploaded successfully",
+            "errorFile": "File upload error",
+            "successLog": "✅ File uploaded successfully"
+        },
+        "email_notifications": {
+            "problemBase": "Notification about the problem database",
+            "solveRegEnd": "Notification about the end of registration (Solve)",
+            "beforeArrival": "Notification before arrival",
+            "conferenceStart": "Conference opening",
+            "greeting": "Hello, {{firstname}} {{lastname}}!",
+            "problemBase_content": "The problem database for solutions will open soon. Stay tuned for updates!",
+            "beforeArrival_content": "The conference is coming up soon. Please confirm if your participation format will change.",
+            "participation_links": {
+                "online": "Switch to Online",
+                "offline": "Switch to Offline",
+                "mixed": "Switch to Mixed"
+            },
+            "subject": "Notification: {{event}}",
+            "confirmation_sent": "Email sent: {{email}} (event: {{event}})"
+        },
+        "email_verification": {
+            "subject": "Verify your email",
+            "greeting": "Hello!",
+            "body": "Click the link below to verify your email:",
+            "button": "Verify Email",
+            "text": "Hello! Click the link to verify your email: {{link}}"
+        },
+        "verification": {
+            "success": {
+                "title": "Email Verified",
+                "header": "Email Verified",
+                "message": "You can now log in to the system.",
+                "button": "Go to Profile"
+            },
+            "failed": {
+                "title": "Verification Error",
+                "header": "Error",
+                "message": "The token is invalid or has expired.",
+                "button": "Try Again"
+            }
+        }
+    }
+}

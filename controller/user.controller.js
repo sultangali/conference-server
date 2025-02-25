@@ -47,7 +47,7 @@ export const registration = async (req, res) => {
     // Проверяем, нет ли пользователя с таким email
     const isEmailExist = await User.findOne({ email });
     if (isEmailExist) {
-      return res.status(400).json({ message: "Пользователь с таким email уже зарегистрирован" });
+      return res.status(400).json({ message: req.t('server.registration.emailExists') });
     }
 
     // Хэшируем пароль
@@ -166,7 +166,7 @@ export const registration = async (req, res) => {
     );
 
     res.status(201).json({
-      message: "Регистрация прошла успешно! Проверьте email для подтверждения.",
+      message: req.t('server.registration.success'),
       userData,
       article, // 👈 Отправляем данные статьи (если есть)
       coauthors: createdCoauthors, // 👈 Отправляем логины и пароли соавторов
@@ -175,7 +175,7 @@ export const registration = async (req, res) => {
 
   } catch (error) {
     console.error("Ошибка регистрации:", error);
-    res.status(500).json({ message: "Ошибка на сервере", error: error.message });
+    res.status(500).json({ message: req.t('server.error'), error: error.message });
   }
 };
 
@@ -186,7 +186,7 @@ export const login = async (req, res) => {
     let user = await User.findOne({ email: login }) || await User.findOne({ login: login }).populate('user');
 
     if (!user) {
-      return res.status(404).json({ message: "Пользователь не найден" });
+      return res.status(404).json({ message: req.t('server.login.notFound') });
     }
 
     // if (!user.isVerified) {
@@ -195,7 +195,7 @@ export const login = async (req, res) => {
 
     const isPasswordValid = await bcrypt.compare(password, user.hashedPassword);
     if (user.hashedPassword != password) {
-      return res.status(400).json({ message: "Неверный email или пароль" });
+      return res.status(400).json({ message: req.t('server.login.invalidCredentials') });
     }
 
     // Создаем токен
@@ -218,7 +218,7 @@ export const me = async (req, res) => {
     const article = await Article.findOne({ correspondent:  user.role == "correspondent" ? userId : user.correspondent?._id }).exec();
 
     if (!user) {
-      return res.status(404).json({ message: "Пользователь не найден" });
+      return res.status(404).json({ message: req.t('server.user.notFound') });
     }
 
     // Исключаем пароль
@@ -229,7 +229,7 @@ export const me = async (req, res) => {
       article, // Теперь статья не содержит дублирования соавторов
     });
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json(req.t('server.error'));
   }
 };
 
@@ -273,24 +273,24 @@ export const updateParticipationType = async (req, res) => {
     const { type } = req.query; // online, offline, mixed
 
     if (!["online", "offline", "mixed"].includes(type)) {
-      return res.status(400).json({ message: "Некорректный тип участия" });
+      return res.status(400).json({ message: req.t('server.participation.invalidType') });
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: "Пользователь не найден" });
+      return res.status(404).json({ message: req.t('server.user.notFound') });
     }
 
     user.participation_form = type;
     await user.save();
 
     return res.send(`
-      <h2>✅ Форма участия успешно обновлена</h2>
-      <p>Вы выбрали: <b>${type === "online" ? "Онлайн" : type === "offline" ? "Офлайн" : "Смешанный"}</b></p>
+      <h2>✅ ${req.t('server.participation.updated')}</h2>
+      <p>${req.t('server.participation.selected')} <b>${type === "online" ? req.t(`server.participation.types.online`) : type === "offline" ? req.t(`server.participation.types.offline`) : req.t(`server.participation.types.mixed`)}</b></p>
     `);
   } catch (error) {
     console.error("Ошибка обновления формы участия:", error);
-    return res.status(500).json({ message: "Ошибка на сервере" });
+    return res.status(500).json({ message: req.t('server.error') });
   }
 };
 
@@ -298,10 +298,13 @@ export const getParticipants = async (req, res) => {
   try {
     const participants = await User.find({ checked: true }, "lastname firstname fathername organization position rank degree")
       .sort({ lastname: 1 });
+
+
+
     res.status(200).json(participants);
   } catch (error) {
     console.error("Ошибка при получении списка участников:", error);
-    res.status(500).json({ message: "Ошибка сервера" });
+    res.status(500).json({ message: req.t('server.error') });
   }
 };
 

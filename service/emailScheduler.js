@@ -5,10 +5,10 @@ import moment from "moment";
 
 // 📌 Важные даты и ключи для isNotified
 const importantDates = [
-  { date: "2025-03-15", event: "Оповещение о базе проблем", type: "solve", key: "problemBase" },
-  { date: "2025-06-01", event: "Оповещение о конце регистрации (Solve)", type: "solve", key: "solveRegEnd" },
-  { date: "2025-02-21", event: "Оповещение перед заездом", type: "all", key: "beforeArrival" },
-  { date: "2025-06-18", event: "Открытие конференции", type: "all", key: "conferenceStart" },
+  { date: "2025-03-15", event: "email_notifications.problemBase", type: "solve", key: "problemBase" },
+  { date: "2025-06-01", event: "email_notifications.solveRegEnd", type: "solve", key: "solveRegEnd" },
+  { date: "2025-06-14", event: "email_notifications.beforeArrival", type: "all", key: "beforeArrival" },
+  { date: "2025-06-18", event: "email_notifications.conferenceStart", type: "all", key: "conferenceStart" }
 ];
 
 // 📌 Функция отправки писем (раз в нужную дату)
@@ -40,24 +40,32 @@ const checkAndSendEmails = async () => {
       }
 
       for (const user of users) {
-        let emailContent = `<h2>Оповещение: ${event.event}</h2><p>Здравствуйте, ${user.firstname} ${user.lastname}!</p>`;
+        let emailContent = `<h2>${req.t(event.event)}</h2><p>${req.t('email_notifications.greeting', { firstname: user.firstname, lastname: user.lastname })}</p>`;
 
         if (event.type === "solve" && event.event === "Оповещение о базе проблем") {
-          emailContent += `<p>Скоро откроется база задач для решения. Следите за обновлениями!</p>`;
+          emailContent += `<p>${req.t('email_notifications.problemBase_content')}</p>`;
         }
 
         if (event.event === "Оповещение перед заездом") {
           emailContent += `
-            <p>Конференция начинается совсем скоро. Пожалуйста, подтвердите, изменится ли ваша форма участия.</p>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=online" style="background: green; color: white; padding: 10px; text-decoration: none;">Переключиться на Онлайн</a>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=offline" style="background: blue; color: white; padding: 10px; text-decoration: none;">Переключиться на Офлайн</a>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=mixed" style="background: orange; color: white; padding: 10px; text-decoration: none;">Переключиться на Смешанный</a>
-            </br>
-            `;
+            <p>${req.t('email_notifications.beforeArrival_content')}</p>
+            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=online" 
+              style="background: green; color: white; padding: 10px; text-decoration: none;">
+              ${req.t('email_notifications.participation_links.online')}
+            </a>
+            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=offline" 
+              style="background: blue; color: white; padding: 10px; text-decoration: none;">
+              ${req.t('email_notifications.participation_links.offline')}
+            </a>
+            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=mixed" 
+              style="background: orange; color: white; padding: 10px; text-decoration: none;">
+              ${req.t('email_notifications.participation_links.mixed')}
+            </a>
+            </br>`;
         }
 
         // Отправляем письмо
-        await sendEmail(user.email, `Оповещение: ${event.event}`, emailContent);
+        await sendEmail(user.email, req.t('email_notifications.subject', { event: req.t(event.event) }), emailContent);
 
         // Обновляем пользователя: записываем дату отправки письма
         await User.updateOne({ _id: user._id }, { [`isNotified.${event.key}`]: today });

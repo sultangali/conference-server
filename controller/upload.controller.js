@@ -22,7 +22,7 @@ export const uploadAvatar = async (req, res) => {
 export const uploadProblemArticle = async (req, res) => {
   try {
     if (!req.files || !req.files.file) {
-      return res.status(400).json({ message: "Файл не был загружен" });
+      return res.status(400).json({ message: req.t("server.upload.noFile") });
     }
 
     const section = req.body.section || "unknown_section";
@@ -51,13 +51,13 @@ export const uploadProblemArticle = async (req, res) => {
     const fileUrl = `/upload/articles/problem/${newFilename}`;
 
     res.json({
-      message: "Файл успешно загружен",
+      message: req.t("server.upload.successFile"),
       url: fileUrl,
       filename: newFilename,
     });
   } catch (error) {
     console.error("Ошибка загрузки файла:", error);
-    res.status(500).json({ message: "Ошибка на сервере", error: error.message });
+    res.status(500).json({ message:  req.t("server.error"), error: error.message });
   }
 };
 
@@ -66,7 +66,7 @@ export const uploadProblemArticle = async (req, res) => {
 export const uploadSolveArticle = async (req, res) => {
   try {
     if (!req.files || !req.files.file) {
-      return res.status(400).json({ message: "Файл не был загружен" });
+      return res.status(400).json({ message: req.t("server.upload.noFile") });
     }
 
     const section = req.body.section || "unknown_section";
@@ -90,12 +90,12 @@ export const uploadSolveArticle = async (req, res) => {
     const fileUrl = `/upload/articles/solve/${newFilename}`;
 
     res.json({
-      message: "Файл успешно загружен",
+      message: req.t("server.upload.successFile"),
       url: fileUrl,
       filename: newFilename,
     });
   } catch (error) {
-    console.error("Ошибка загрузки файла:", error);
-    res.status(500).json({ message: "Ошибка на сервере", error: error.message });
+    console.error(req.t("server.upload.errorFile"), error);
+    res.status(500).json({ message: req.t("server.error"), error: error.message });
   }
 };
