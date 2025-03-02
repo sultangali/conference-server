@@ -5,10 +5,10 @@ import moment from "moment";
 
 // 📌 Важные даты и ключи для isNotified
 const importantDates = [
-  { date: "2025-03-15", event: "email_notifications.problemBase", type: "solve", key: "problemBase" },
+  { date: "2025-04-01", event: "email_notifications.problemBase", type: "solve", key: "problemBase" },
   { date: "2025-06-01", event: "email_notifications.solveRegEnd", type: "solve", key: "solveRegEnd" },
-  { date: "2025-06-14", event: "email_notifications.beforeArrival", type: "all", key: "beforeArrival" },
-  { date: "2025-06-18", event: "email_notifications.conferenceStart", type: "all", key: "conferenceStart" }
+  { date: "2025-06-16", event: "email_notifications.beforeArrival", type: "all", key: "beforeArrival" },
+  { date: "2025-06-20", event: "email_notifications.conferenceStart", type: "all", key: "conferenceStart" }
 ];
 
 // 📌 Функция отправки писем (раз в нужную дату)
