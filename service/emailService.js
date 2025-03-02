@@ -16,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendVerificationEmail = async (email, token, lang = "ru") => {
-  const verificationLink = `http://localhost:5000/api/user/auth/verify/${token}`;
+  const verificationLink = `https://conference.buketov.edu.kz/api/user/auth/verify/${token}`;
 
   const translations = {
     ru: {

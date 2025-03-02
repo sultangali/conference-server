@@ -49,15 +49,15 @@ const checkAndSendEmails = async () => {
         if (event.event === "Оповещение перед заездом") {
           emailContent += `
             <p>${req.t('email_notifications.beforeArrival_content')}</p>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=online" 
+            <a href="https://conference.buketov.edu.kz/api/user/update-participation/${user._id}?type=online" 
               style="background: green; color: white; padding: 10px; text-decoration: none;">
               ${req.t('email_notifications.participation_links.online')}
             </a>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=offline" 
+            <a href="https://conference.buketov.edu.kz/api/user/update-participation/${user._id}?type=offline" 
               style="background: blue; color: white; padding: 10px; text-decoration: none;">
               ${req.t('email_notifications.participation_links.offline')}
             </a>
-            <a href="http://localhost:5000/api/user/update-participation/${user._id}?type=mixed" 
+            <a href="https://conference.buketov.edu.kz/api/user/update-participation/${user._id}?type=mixed" 
               style="background: orange; color: white; padding: 10px; text-decoration: none;">
               ${req.t('email_notifications.participation_links.mixed')}
             </a>
