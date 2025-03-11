@@ -19,8 +19,14 @@ export const all = async (req, res) => {
     try {
       const { id } = req.params;
       const { status } = req.body;
-  
+ 	console.log(req.userId) 
       // Проверяем, существует ли статья
+      const user = User.findById(req.userId)
+	
+      if (user.role !== "moderator") {
+	return res.status(403).json({message: req.t("server.error")})
+      }
+
       const article = await Article.findById(id);
       if (!article) {
         return res.status(404).json({ message: req.t("server.article.notFound") });

@@ -28,7 +28,7 @@ export const verifyEmail = async (req, res) => {
               
              <h4>${req.t('server.verification.failed.header')}</h4>
                 <p>${req.t('server.verification.failed.message')}</p>
-                <a href="http://localhost:5173/registration" class="btn btn-secondary" style="border-radius: 0px">${req.t('server.verification.failed.button')}</a>
+                <a href="https://conference.buketov.edu.kz/registration" class="btn btn-secondary" style="border-radius: 0px">${req.t('server.verification.failed.button')}</a>
             </div>
         </body>
         </html>
@@ -95,7 +95,7 @@ export const verifyEmail = async (req, res) => {
               <div class="text-center"><img style="height: 100px; width: auto;  margin-bottom: 12px" src="https://colab.ws/storage/images/resized/vYmGTEdbLFsSobJVwZNKM7C8V7rBRljRki1IsMOL_medium.webp"/></div>
               <h4>${req.t('server.verification.success.header')}</h4>
               <p>${req.t('server.verification.success.message')}</p>
-              <a href="http://localhost:5173/profile" class="btn btn-primary" style="border-radius: 0px">${req.t('server.verification.success.button')}</a>
+              <a href="https://conference.buketov.edu.kz/profile" class="btn btn-primary" style="border-radius: 0px">${req.t('server.verification.success.button')}</a>
           </div>
       </body>
       </html>
@@ -117,7 +117,7 @@ export const verifyEmail = async (req, res) => {
          
            <h4>${req.t('server.verification.failed.header')}</h4>
               <p>${req.t('server.verification.failed.message')}</p>
-              <a href="http://localhost:5173/registration" class="btn btn-secondary">${req.t('server.verification.failed.button')}</a>
+              <a href="https://conference.buketov.edu.kz/registration" class="btn btn-secondary">${req.t('server.verification.failed.button')}</a>
           </div>
       </body>
       </html>

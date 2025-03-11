@@ -50,9 +50,9 @@ app.use('/upload', express.static('upload'))
 app.use('/images', express.static('images'))
 
 app.use(cors(
-//     {
-//     origin: 'http://localhost:5000'
-// }
+     {
+     origin: 'https://conference.buketov.edu.kz'
+ }
 )) 
   
 
