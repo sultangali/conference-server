@@ -18,13 +18,13 @@ export const all = async (req, res) => {
   export const updateArticleStatus = async (req, res) => {
     try {
       const { id } = req.params;
-      const { status } = req.body;
- 	console.log(req.userId) 
+      const { status, comment } = req.body;
+ 	    console.log(req.userId) 
       // Проверяем, существует ли статья
-      const user = User.findById(req.userId)
-	
-      if (user.role !== "moderator") {
-	return res.status(403).json({message: req.t("server.error")})
+
+      const user = await User.findById(req.userId)
+      if (!user || user.role !== "moderator") {
+	      return res.status(403).json({message: req.t("server.error")});
       }
 
       const article = await Article.findById(id);
@@ -33,13 +33,14 @@ export const all = async (req, res) => {
       }
   
       // Проверяем, является ли статус допустимым
-      const validStatuses = ["approved", "process", "denied"];
+      const validStatuses = ["approved", "process", "revision", "denied"];
       if (!validStatuses.includes(status)) {
         return res.status(400).json({ message: req.t("server.article.invalidStatus") });
       }
   
       // Обновляем статус статьи
       article.status = status;
+      article.comment = comment;
       await article.save();
   
       res.json({ message: req.t("server.article.statusUpdated"), article });
@@ -49,22 +50,6 @@ export const all = async (req, res) => {
     }
   };
   
-
-export const one = async (req, res) => {
-    try {
-        const { code } = req.body
-      const article = await Article.findOne({ code }).populate('authors')
-      res.status(200).json({
-        found: true,
-        title: article.title,
-        author: article.authors[0],
-        file_url: article.file_url,
-        section: article.section
-      })
-    } catch (error) {
-      res.status(500).json(error.message)
-    }
-}
 
 export const getProblems = async (req, res) => {
   try {
@@ -99,7 +84,7 @@ export const createSolveArticle = async (req, res) => {
   try {
     const { articleTitle, section, correspondentId, problem, fileUrl, coauthors } = req.body;
     
-    if (!articleTitle || !section || !correspondentId || !problem || !fileUrl) {
+    if (!articleTitle || !section || !correspondentId || !fileUrl) {
       return res.status(400).json({ message: req.t("server.article.allFieldsRequired") });
     }
 
@@ -126,13 +111,20 @@ export const createSolveArticle = async (req, res) => {
     if (coauthors && coauthors.length > 0) {
       for (const coauthor of coauthors) {
         const password = generatePassword();
-        const login = `${transliterate(coauthor.lastName)}${transliterate(coauthor.firstName[0])}${transliterate(coauthor.fatherName ? coauthor.fatherName[0] : '')}`;
+        let login = `${transliterate(coauthor.lastName)}${transliterate(coauthor.firstName[0])}${transliterate(coauthor.fatherName ? coauthor.fatherName[0] : '')}`;
+        let index = 1;
+        let originalLogin = login;
+
+        while (await User.findOne({ login })) {
+          login = `${originalLogin}_${index}`;
+          index++;
+        }
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const newCoauthor = new User({
           email: `${login.toLowerCase()}@auto.coauthor.com`,
           login,
-          hashedPassword,
+          hashedPassword: password,
           lastname: coauthor.lastName,
           firstname: coauthor.firstName,
           fathername: coauthor.fatherName || "",
@@ -146,6 +138,7 @@ export const createSolveArticle = async (req, res) => {
             lastname: correspondent?.lastname,
             email: correspondent?.email
           },
+          isVerified: true,
           role: "coauthor",
         });
 

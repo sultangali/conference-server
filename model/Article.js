@@ -14,7 +14,8 @@ const articleSchema = new mongoose.Schema(
     problem: {
       type: String, 
     },
-    status: { type: String, enum: ["approved", "process", "denied"], default: "process" },
+    status: { type: String, enum: ["approved", "revision", "process", "denied"], default: "process" },
+    comment: String,
     file_url: String,
     section: String,
   },

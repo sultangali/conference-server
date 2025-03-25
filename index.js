@@ -4,7 +4,6 @@ import mongoose from 'mongoose'
 import config from 'config'
 import cors from 'cors'
 
-
 import i18next from 'i18next';
 import Backend from 'i18next-fs-backend';
 import middleware from 'i18next-http-middleware';
@@ -25,8 +24,6 @@ const app = express()
  
 const PORT = config.get('port')
  
- 
-
 i18next
   .use(Backend)
   .use(middleware.LanguageDetector)

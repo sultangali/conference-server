@@ -1,4 +1,3 @@
-
 import User from '../model/User.js'
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -58,8 +57,15 @@ export const registration = async (req, res) => {
     const userRole = role || "correspondent";
 
     // Создаём пользователя (корреспондент)
-    
-    const correspondentLogin = `${transliterate(lastName)}${transliterate(firstName[0])}${transliterate(fatherName ? fatherName[0] : '')}`;
+    const baseLogin = `${transliterate(lastName)}${transliterate(firstName[0])}${transliterate(fatherName ? fatherName[0] : '')}`;
+    let correspondentLogin = baseLogin;
+
+    // Проверяем на уникальность логина
+    let index = 1;
+    while (await User.findOne({ login: correspondentLogin })) {
+      correspondentLogin = `${baseLogin}_${index}`;
+      index++;
+    }
 
     // ✅ Генерация токена верификации
     const verificationToken = randomBytes(32).toString("hex");
@@ -106,11 +112,17 @@ export const registration = async (req, res) => {
     for (const coauthor of coauthors) {
       const generatedPassword = generatePassword();
       const login = `${transliterate(coauthor.lastName)}${transliterate(coauthor.firstName[0])}${transliterate(coauthor.fatherName ? coauthor.fatherName[0] : '')}`;
+      let index = 1;
+      let originalLogin = login;
 
+      while (await User.findOne({ login })) {
+        login = `${originalLogin}_${index}`;
+        index++;
+      }
       const coauthorUser = new User({
         email: `${login?.toLowerCase()}@auto.coauthor.com`, // Временный email (если не указан)
         login,
-        hashedPassword: bcrypt.hashSync(generatedPassword, salt),
+        hashedPassword: generatedPassword,
         correspondent: correspondent._id,
         lastname: coauthor.lastName,
         firstname: coauthor.firstName,
@@ -121,6 +133,7 @@ export const registration = async (req, res) => {
         rank: coauthor.rank,
         checked,
         participation_form: coauthor.participationForm,
+        isVerified: true,
         correspondent_data: {
           firstname:  correspondent?.firstname,
           lastname: correspondent?.lastname,
@@ -134,7 +147,7 @@ export const registration = async (req, res) => {
       createdCoauthors.push({
         _id: coauthorUser._id, // 👈 Добавляем _id
         email: `${login}@auto.coauthor.com`, // Временный email (если не указан)
-        hashedPassword: bcrypt.hashSync(generatedPassword, salt),
+        hashedPassword: generatedPassword,
         lastname: coauthor.lastName,
         firstname: coauthor.firstName,
         fathername: coauthor.fatherName || "",
