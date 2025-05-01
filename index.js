@@ -47,7 +47,7 @@ app.use('/upload', express.static('upload'))
 app.use('/images', express.static('images'))
 
 app.use(cors({
-  origin: 'http://localhost:5173', // URL вашего клиентского приложения
+  origin: 'https://conference.buketov.edu.kz', // URL вашего клиентского приложения
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Language']
