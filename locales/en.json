@@ -46,7 +46,23 @@
             "statusUpdateError": "Error updating article status",
             "allFieldsRequired": "All fields are required!",
             "successfullyCreated": "Article successfully created",
-            "createError": "Error creating article"
+            "createError": "Error creating article",
+            "title": "Title",
+            "abstract": "Abstract",
+            "keywords": "Keywords",
+            "authors": "Authors",
+            "status": "Status",
+            "file": "File",
+            "submit": "Submit Article",
+            "edit": "Edit Article",
+            "delete": "Delete Article",
+            "confirmDelete": "Are you sure you want to delete this article?",
+            "draft": "Draft",
+            "submitted": "Submitted",
+            "underReview": "Under Review",
+            "accepted": "Accepted",
+            "rejected": "Rejected",
+            "published": "Published"
         },
         "correspondent": {
             "notFound": "Correspondent not found!"

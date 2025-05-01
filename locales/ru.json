@@ -46,7 +46,23 @@
             "statusUpdateError": "Ошибка обновления статуса статьи",
             "allFieldsRequired": "Все поля обязательны!",
             "successfullyCreated": "Статья успешно создана",
-            "createError": "Ошибка создания статьи"
+            "createError": "Ошибка создания статьи",
+            "title": "Название",
+            "abstract": "Аннотация",
+            "keywords": "Ключевые слова",
+            "authors": "Авторы",
+            "status": "Статус",
+            "file": "Файл",
+            "submit": "Отправить статью",
+            "edit": "Редактировать статью",
+            "delete": "Удалить статью",
+            "confirmDelete": "Вы уверены, что хотите удалить эту статью?",
+            "draft": "Черновик",
+            "submitted": "Отправлено",
+            "underReview": "На рассмотрении",
+            "accepted": "Принято",
+            "rejected": "Отклонено",
+            "published": "Опубликовано"
         },
         "correspondent": {
             "notFound": "Корреспондент не найден!"

@@ -3,7 +3,9 @@ import User from "../model/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import config from "config";
-
+import moment from "moment";
+import path from "path";
+import fs from "fs";
 import {transliterate} from '../service/transliterate.js'
 
 export const all = async (req, res) => {
@@ -176,5 +178,64 @@ export const createSolveArticle = async (req, res) => {
   } catch (error) {
     console.error("Ошибка создания статьи:", error);
     return res.status(500).json({ message: req.t("server.error"), error: error.message });
+  }
+};
+
+export const updateArticle = async (req, res) => {
+  try {
+    const { title, section } = req.body;
+    const userId = req.userId;
+
+    // Находим статью, где пользователь является корреспондентом
+    const article = await Article.findOne({ correspondent: userId }).populate('correspondent');
+    if (!article) {
+      return res.status(404).json({ message: req.t("server.article.notFound") });
+    }
+
+    // Проверяем, что статус статьи позволяет редактирование
+    if (article.status !== 'revision' && article.status !== 'denied') {
+      return res.status(403).json({ message: req.t("server.article.cannotEdit") });
+    }
+
+    // Обновляем данные статьи
+    const updateData = {
+      title,
+      section,
+      status: 'process', // Меняем статус на process для повторной проверки
+      comment: null // Очищаем комментарий модератора
+    };
+
+    // Если загружен новый файл
+    if (req.file) {
+      // Генерируем новое имя файла
+      const formattedDate = moment().format("DDMMYY_HHmmss");
+      const correspondentName = `${article.correspondent.lastname}_${article.correspondent.firstname}`;
+      const cleanName = transliterate(correspondentName?.replace(/\s+/g, "_"))?.toUpperCase();
+      const cleanSection = "SEC" + section?.substring(8, 9);
+      const fileExt = path.extname(req.file.originalname);
+      const newFilename = `${cleanSection}_${cleanName}_${formattedDate}${fileExt}`;
+
+      // Переименовываем файл
+      const oldPath = req.file.path;
+      const newPath = path.join(path.dirname(oldPath), newFilename);
+      fs.renameSync(oldPath, newPath);
+
+      updateData.file_url = `/upload/articles/problem/${newFilename}`;
+    }
+
+    // Обновляем статью
+    const updatedArticle = await Article.findByIdAndUpdate(
+      article._id,
+      updateData,
+      { new: true }
+    );
+
+    res.json({
+      message: req.t("server.article.updated"),
+      article: updatedArticle
+    });
+  } catch (error) {
+    console.error("Ошибка обновления статьи:", error);
+    res.status(500).json({ message: req.t("server.error"), error: error.message });
   }
 };
