@@ -62,7 +62,11 @@
             "underReview": "Under Review",
             "accepted": "Accepted",
             "rejected": "Rejected",
-            "published": "Published"
+            "published": "Published",
+            "receiptStatus": "Receipt Status",
+            "receiptStatusUpdated": "Receipt status updated",
+            "downloadReceipt": "Download Receipt",
+            "noReceipt": "No receipt uploaded"
         },
         "correspondent": {
             "notFound": "Correspondent not found!"
@@ -110,6 +114,24 @@
                 "header": "Error",
                 "message": "The token is invalid or has expired.",
                 "button": "Try Again"
+            }
+        },
+        "receipt": {
+            "title": "Payment Receipt",
+            "status": "Status",
+            "file": "Receipt File",
+            "upload": "Upload Receipt",
+            "submit": "Submit Receipt",
+            "uploading": "Uploading...",
+            "download": "Download Receipt",
+            "noFileSelected": "Please select a file to upload",
+            "uploadSuccess": "Receipt uploaded successfully",
+            "uploadError": "Error uploading receipt",
+            "status": {
+                "pending": "Pending Review",
+                "approved": "Approved",
+                "rejected": "Rejected",
+                "unknown": "Unknown"
             }
         }
     }

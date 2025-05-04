@@ -239,3 +239,69 @@ export const updateArticle = async (req, res) => {
     res.status(500).json({ message: req.t("server.error"), error: error.message });
   }
 };
+
+export const uploadReceipt = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const file = req.file;
+
+    if (!file) {
+      return res.status(400).json({ message: req.t("server.upload.noFile") });
+    }
+
+    // Find the article for the current user
+    const article = await Article.findOne({ correspondent: userId });
+    if (!article) {
+      return res.status(404).json({ message: req.t("server.article.notFound") });
+    }
+
+    // Update article with receipt URL
+    article.receipt_url = `/upload/articles/receipts/${file.filename}`;
+    article.receipt_status = 'pending';
+    await article.save();
+
+    res.json({
+      message: req.t("server.upload.successFile"),
+      receipt_url: article.receipt_url
+    });
+  } catch (error) {
+    console.error("Error uploading receipt:", error);
+    res.status(500).json({ message: req.t("server.error"), error: error.message });
+  }
+};
+
+export const updateReceiptStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { receipt_status } = req.body;
+
+    // Check if user is moderator
+    const user = await User.findById(req.userId);
+    if (!user || user.role !== "moderator") {
+      return res.status(403).json({ message: req.t("server.error") });
+    }
+
+    // Find and update article
+    const article = await Article.findById(id);
+    if (!article) {
+      return res.status(404).json({ message: req.t("server.article.notFound") });
+    }
+
+    // Validate receipt status
+    const validStatuses = ["pending", "approved", "rejected"];
+    if (!validStatuses.includes(receipt_status)) {
+      return res.status(400).json({ message: req.t("server.article.invalidStatus") });
+    }
+
+    article.receipt_status = receipt_status;
+    await article.save();
+
+    res.json({
+      message: req.t("server.article.receiptStatusUpdated"),
+      article
+    });
+  } catch (error) {
+    console.error("Error updating receipt status:", error);
+    res.status(500).json({ message: req.t("server.error"), error: error.message });
+  }
+};

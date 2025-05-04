@@ -18,6 +18,8 @@ const articleSchema = new mongoose.Schema(
     comment: String,
     file_url: String,
     section: String,
+    receipt_url: String,
+    receipt_status: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" }
   },
   { timestamps: true }
 );

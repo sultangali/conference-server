@@ -15,6 +15,7 @@ import "./service/emailScheduler.js";
 import userRouter from './route/user.routes.js'
 import uploadRouter from './route/upload.routes.js'
 import articleRouter from './route/article.routes.js'
+import emailRouter from './route/email.routes.js'
 
 // Настраиваем `__dirname` для ES-модулей
 const __filename = fileURLToPath(import.meta.url);
@@ -47,7 +48,9 @@ app.use('/upload', express.static('upload'))
 app.use('/images', express.static('images'))
 
 app.use(cors({
-  origin: 'https://conference.buketov.edu.kz', // URL вашего клиентского приложения
+  origin: 
+  'https://conference.buketov.edu.kz', 
+  // 'http://localhost:5173',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept-Language']
@@ -67,6 +70,7 @@ const start = async () => {
     app.use('/api/upload', uploadRouter)
     app.use('/api/user', userRouter)
     app.use('/api/articles', articleRouter)
+    app.use('/api', emailRouter)
  
     app.listen(PORT, (error) => {
         if(error) {
