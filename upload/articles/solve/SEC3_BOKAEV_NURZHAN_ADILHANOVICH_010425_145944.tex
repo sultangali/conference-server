@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Актуальные вопросы междисциплинарных научных исследований}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Караганда, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+        
+        \vspace{0.4cm}
+        \large\@author
+        
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1}L.N. Gumilyov Eurasian National University, Astana, Kazakhstan\\
+          E-mail: bokayev2011@yandex.ru\\
+          \textsuperscript{2}Institute of Mathematical of the  Czech Academy of Sciences\\
+          E-mail: gogatish@math.cas.cz\\
+          \textsuperscript{3}L.N. Gumilyov Eurasian National University, Astana, Kazakhstan\\
+          E-mail: nurgul.kuzeubaeva@mail.ru\\}
+          \textsuperscript{4}Department of Mathematics, Kirikkale University, Kirikkale, T\" urkiye\\
+          E-mail: tugceunver@kku.edu.tr\\
+    \end{center}
+}
+\makeatother
+
+% Paper info
+\title{Reduction theorems for the discrete nonlinear operator on the cones of monotone sequences}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{ N.~Bokayev.\textsuperscript{1}, A.~Gogatishvili.\textsuperscript{2}, N.~Kuzeubayeva\textsuperscript{3} , N.~"Unver\textsuperscript{4}}
+
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+Let $\{u_k\}$,  $\{a_n\}$ and $\{b_n\}$ be given
+non-negative sequences. Let $p, q\in (0,\infty)$. We will investigate the following inequalities:
+
+\begin{equation}  \label{T1}
+\left(\sum_{n=1}^{\infty}
+\left(\sup_{n\le i<\infty} u_i\sum^i_{k=1}x_k\right)^q a_n\right)^{\frac{1}{q}} \le C
+\left(\sum^\infty_{n=1} x_n ^p b_n\right)^{\frac{1}{p}},
+\end{equation}   
+\begin{equation}  \label{T2}
+\left(\sum_{n=1}^{\infty}
+\left(\sup_{1\le i<n} u_i\sum^i_{k=1}x_k\right)^q a_n\right)^{\frac{1}{q}} \le C
+\left(\sum^\infty_{n=1} x_n ^p b_n\right)^{\frac{1}{p}}
+\end{equation}
+for non-negative, non-increasing sequences $x = \{x_n\}$   and the
+constant $C > 0$  is independent of $x$. 
+
+\textbf{Theorem 1.}  \label{Eg_1} Let $0<q\leq\infty,\,  1<p<\infty$. Assume that $\{a_n\}$ and $\{b_n\}$ are given
+non-negative weight sequences. %and put $B_n:=\sum_{i=1}^n b_i$  and  $\sum_{n=1}^\infty b_n=\infty$.  
+Then the inequality \eqref{T1} holds  for all non-negative, non-increasing sequences $\{x_n\}$ if and only if the following  inequality:
+\begin{equation}
+    \label{T11}
+\left(\sum_{n=1}^\infty\left(\sup_{n\le i<\infty} u_i\sum_{k=1}^i\left(\sum_{j=k}^\infty y_j\right)\right)^q a_n\right)^{\frac{1}{q}}\leq C\left(\sum_{n=1}^\infty y_n^pB_{n+1}^{p-1}B_n b_{n+1}^{1-p}\right)^{\frac{1}{p}}, 
+\end{equation}
+holds for all non-negative sequences $\{y_n\}$, where  $B_n =\sum^n_{k=1}b_k, \quad n\in {\mathbb N}$.
+
+\begin{theorem} \label{Th4}
+\textbf{Theorem 2.}  \label{Eg_1}
+Let $0<q\leq\infty,\,  1<p<\infty$. Assume that $\{a_n\}$ and $\{b_n\}$ are given
+non-negative weight sequences.% and put $B_n:=\sum_{i=1}^n b_i$.  
+Then the inequality \eqref{T2} holds  for all non-negative, non-increasing sequences $\{x_n\}$ if and only if for any $\alpha>0$ the following inequality:
+\begin{equation}
+    \label{T41}
+\left(\sum_{n=1}^\infty\left(\sup_{1\le i<n } 
+u_i\sum_{i=n}^\infty \frac{1}{B_i^{\alpha+1}}\left(\sum_{k=1}^i  B_k^{\alpha+1}y_k\right)\right)^q a_n\right)^{\frac{1}{q}}\leq C\left(\sum_{n=1}^\infty y_n^pB_{n}^{p} b_{n}^{1-p}\right)^{\frac{1}{p}}, 
+\end{equation}
+holds for all non-negative sequences $\{y_n\}$, where  $B_n =\sum^n_{k=1}b_k, \quad n\in {\mathbb N}$.
+
+\end{theorem}
+
+In the continuous case, similar questions were considered in [1] and [2].
+
+\begin{thebibliography}{00}\label{ref:ref}
+
+\bibitem{1}
+A.Gogatishvili, L. Pick and T. \"Unver, "Weighted inequalities for discrete iterated kernel operators", Math. Nachr. 295:11 (2022), 2171-2196.
+
+\bibitem{2}
+A.Gogatishvili and V.D.Stepanov., "Reduction theorems for weighted integral inequalities on the cone of monotone functions", Uspekhi Mat. Nauk., 405:1 (2013), 156-172.
+
+\end{thebibliography}
+\end{document}
+

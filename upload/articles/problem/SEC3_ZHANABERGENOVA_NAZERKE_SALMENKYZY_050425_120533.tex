@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Current Issues in Mathematics}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Karaganda, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+        
+        \vspace{0.4cm}
+        \large\@author
+        
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1}L.N. Gumilyov Eurasian National University, Institute of mathematics
+and mathematical modeling, Astana, Kazakhstan\\
+          E-mail: zhanabergenova.ns@gmail.com\\
+          \textsuperscript{2}Institute of mathematics and mathematical modeling, Almaty, Kazakhstan\\
+          E-mail: makpal9136@mail.ru\\}
+    \end{center}
+}
+\makeatother
+
+% Paper info
+\title{WEIGHTED ESTIMATES FOR SOME CLASS OF QUASILINEAR OPERATORS}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{Zhangabergenova N.\textsuperscript{1}, Manarbek M. \textsuperscript{2}}
+
+
+\date{}
+
+\begin{document}
+
+\maketitle
+Let  $0<q, p, r < \infty$ and $\frac{1}{p}+\frac{1}{p'}=1$. Let $u=\{u_{i}\}_{i=1}^{\infty}$ and $v=\{v_{i}\}_{i=1}^{\infty}$  be weight sequences, i.e., positive sequences of real numbers. We denote by  $l_{p,v}$ the space of sequences  $f=\{f_{i}\}_{i=1}^{\infty}$ of non-negative real numbers such that
+$$\|vf\|_{p}=\left(\sum_{i=1}^\infty (v_i f_i)^p \right)^\frac{1}{p} <\infty. $$
+
+For any non-negative $f \in l_{p,v}$ we consider the following iterated discrete Hardy-type inequality with three
+weights
+\begin{equation}
+\label{Eq_1}
+	\left(\sum\limits_{n=1}^\infty u_n^q (K^{\pm}f)_n^{q} \right)^\frac{1}{q} \leq C \left(\sum\limits_{i=1}^\infty (v_i f_i)^p \right)^\frac{1}{p},
+\end{equation}
+where $C$  is a positive constant independent of $f$ and $K$ is a quasilinear operators defined as follows
+$$(K^{-}f)_n\left(\sum\limits_{k=n}^\infty   a_{k,n} \left(\sum\limits_{i=k}^\infty f_i \right)^r \right)^\frac{1}{r}, \;\;\;$$
+$$(K^{+}f)_n\left(\sum\limits_{k=1}^n   a_{n,k} \left(\sum\limits_{i=1}^k f_i \right)^r \right)^\frac{1}{r}. \;\;\;$$
+ The aim of this paper is to characterize inequality (\ref{Eq_1}) and its dual version
+ for the case $0<p\leq r< q<\infty$. Iterated inequalities involving matrix operators were studied in works \cite{1} and \cite{2} for the same parameters ratio. \\
+\textbf{Theorem 1.} Let $0<p\leq r< q<\infty$. Then for any non-negative $f \in l_{p,v}$\\
+	(a) If $0<p\leq 1$, the inequality (\ref{Eq_1}) for operator $K^{-}$ holds if and only if 
+$$D =\sup\limits_{j\geq1} v_j^{-1} \left(\sum\limits_{n=1}^j u_n^q \left(\sum\limits_{i=n}^j a_{i,n}\right)^\frac{q}{r} \right)^\frac{1}{q}<\infty$$	
+(b) If $1<p<\infty$, the inequality (\ref{Eq_1}) for operator $K^{-}$ holds if and only if 	
+$$\mathcal{D} =\sup\limits_{j\geq1} \left(\sum\limits_{i=j}^\infty v_i^{-p'} \right)^\frac{1}{p'} \left(\sum\limits_{n=1}^j u_n^q \left(\sum\limits_{i=n}^j a_{i,n}\right)^\frac{q}{r} \right)^\frac{1}{q}<\infty.
+$$
+Moreover, $C\approx D$ in case (a) and $C\approx \mathcal{D}$ in case (b), where  $C$  is the best constant in (\ref{Eq_1}).\\
+\textbf{Theorem 2.} Let $0<p\leq r< q<\infty$. Then for any non-negative $f \in l_{p,v}$\\
+	(a) If $0<p\leq 1$, the inequality (\ref{Eq_1}) for operator $K^{+}$ holds if and only if 
+$$M =\sup\limits_{j\geq1} v_j^{-1} \left(\sum\limits_{n=j}^\infty u_n^q \left(\sum\limits_{i=j}^n a_{n,i}\right)^\frac{q}{r} \right)^\frac{1}{q}<\infty$$	
+(b) If $1<p<\infty$, the inequality (\ref{Eq_1}) for operator $K^{+}$ holds if and only if 	
+$$\mathcal{M} =\sup\limits_{j\geq1} \left(\sum\limits_{i=1}^j v_i^{-p'} \right)^\frac{1}{p'} \left(\sum\limits_{n=j}^\infty u_n^q \left(\sum\limits_{i=j}^n a_{n,i}\right)^\frac{q}{r} \right)^\frac{1}{q}<\infty.
+$$
+Moreover, $C\approx M$ in case (a) and $C\approx \mathcal{M}$ in case (b), where  $C$  is the best constant in (\ref{Eq_1}).\\
+
+This work was financially supported by the Ministry of Science and Higher Education of the Republic of Kazakhstan (Grant No.AP22684768)
+
+\begin{thebibliography}{00}\label{ref:ref}
+\bibitem{1}
+Kalybay A., Temirkhanova A.M., Zhangabergenova N. “On iterated discrete Hardy type inequalities for a class of matrix operators”, Analysis Mathematica, 49:1 (2023), 137-150. 
+
+\bibitem{2}
+Zhangabergenova N., Temirkhanova A.M. “Iterated discrete Hardy-type inequalities with three weights for a class of matrix operators” Bulletin of the Karaganda University. Mathematics Series, 112:4 (2023), 163-172.
+\end{thebibliography}
+\end{document}
+
+
+

@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Current issues in mathematics}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Караганда, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+
+        \vspace{0.4cm}
+        \large\@author
+
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1} Karaganda Buketov University, Universitetskaya ul. 28, Karaganda, Kazakhstan, 100026\\
+          E-mail: bektas.tolegen99@gmail.com\\
+          \textsuperscript{2}Karaganda Buketov University, Universitetskaya ul. 28, Karaganda, Kazakhstan, 100026\\
+          E-mail: nariman.tokmagambetov@gmail.com\\}
+    \end{center}
+}
+\makeatother
+
+% Paper info
+\title{Existence of solutions in boundary value problems for nonlinear equations involving q-analogs of fractional derivatives}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{Tolegen B.K.\textsuperscript{1}, Tokmagambetov N.S.\textsuperscript{2}}
+
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+This study begins by presenting the key definitions and preliminary concepts, including the fundamental principles of $q$-calculus, which form the theoretical foundation of the work. Detailed discussions can be found in \cite{CK2000}, \cite{E2002} and \cite{A1969}. This work operates under the standing assumption that
+$0<q<1$.
+
+Let $\alpha \in \mathbb{R}$. Then a $q$-real number $[\alpha ]_q$ is defined by
+$$
+[\alpha ]_{q}=\frac{1-q^{\alpha }}{1-q},
+$$
+where $\mathop{\lim }\limits_{q\rightarrow 1}\frac{1-q^{\alpha }}{1-q}%
+=\alpha $.
+
+
+We introduce for $k\in\mathbb{N}$:
+\begin{eqnarray*}
+(a;q)_0=1,  \; (a;q)_n=\prod\limits_{k=0}^{n-1}\left(1-q^ka\right),  \; (a; q)_\infty = \lim\limits_{n\rightarrow\infty}(a,q)_n, \;
+(a;q)_\alpha=\frac{(a;q)_\infty}{(q^\alpha a;q)_\infty}.
+\end{eqnarray*}
+
+
+
+For any two real numbers $\alpha$ and $\beta$, we have
+\begin{eqnarray*}
+\left(a-b\right)^\alpha_q\left(a-q^\alpha{b}\right)^\beta_q=\left(a-b\right)^{\alpha+\beta}_q.
+\end{eqnarray*}
+
+The gamma function $\Gamma_q(x)$ is defined by
+\begin{eqnarray*}
+\Gamma_q(x)=\frac{(q; q)_\infty }{(q^x; q)_\infty }(1-q)^{1-x}, \;\;\;
+\end{eqnarray*}
+for any $x > 0$. Moreover, it yields that
+\begin{eqnarray*}
+\Gamma_q(x)[x]_q=\Gamma_q(x+1).
+\end{eqnarray*}
+
+The $q$-analogue differential operator $D_{q}f(x)$ is
+\begin{eqnarray*}
+D_{q}f(x)=\frac{f(x)-f(qx)}{x(1-q)},
+\end{eqnarray*}
+and the $q$-derivatives $D^{n}_q(f(x))$ of higher order are defined inductively as follows:
+\begin{eqnarray*}
+D_q^0(f(x))=f(x), \;\;\; D^{n}_q(f(x))=D_q\left(D_q^{n-1}f(x)\right), (n=1,2,3, \dots).
+\end{eqnarray*}
+
+The $q$-integral of a function $f$ defined in the interval $[0,b]$ is defined by the expression
+\begin{eqnarray*}
+\left(I_q f\right)(x)=\int\limits_0^x f(x) \mathrm{d}_q x=x(1-q) \sum_{n=0}^{\infty} f\left(x q^n\right) q^n, \quad x \in[0, b].
+\end{eqnarray*}
+
+The \(q\)-Beta function is defined for any \(\alpha, \beta > 0\) as follows:
+\begin{eqnarray*}
+B_{q}(\alpha, \beta)=\frac{\Gamma_{q}(\alpha)\Gamma_q{(\beta)}}{\Gamma_q(\alpha+\beta)}=\int\limits_{0}^{1}x^{\alpha-1}(1-qx)^{\beta-1}_qd_qx.
+\end{eqnarray*}
+
+\textbf{Definition 1.} \cite{AM2012}.
+Let \(\alpha \geq 0\) and \(f\) be a function defined on \([0,1]\). The Riemann-Liouville fractional \(q\)-integral is expressed as \(\left( I_{q}^{\alpha }f \right)\left( x \right)\), and are defined by
+\begin{eqnarray*}
+\left(I^\alpha_{q,0+}f\right)(x)=\frac{1}{\Gamma_q(\alpha)}\int\limits_0^x(x-qs)_q^{(\alpha-1)}f(s)d_qs.
+\end{eqnarray*}
+
+
+\textbf{Definition 2.}
+The Riemann-Liouville fractional \(q\)-derivative of order \(\alpha \geq 0\) is defined as \(\left( D_{q}^{\alpha }f \right)\left( x \right)\), and
+\begin{eqnarray*}
+\left(D_q^\alpha f\right)(x)=\left(D_q^{[\alpha]} I_q^{[\alpha]-\alpha} f\right)(x), \quad \alpha>0,
+\end{eqnarray*}
+where $[\alpha]$ is the smallest integer greater than or equal to $\alpha$.
+
+\textbf{Lemma 1.} \cite{YU2013}.
+Let \( g(x) \in L[0,1] \) and \( 1 < \alpha \leq 2 \), then there exists a unique solution for
+\begin{eqnarray}\label{additive2.9}
+D_{q, 0+}^\alpha y(x)+f(x,y(x))=0, \quad 0<x<1,  \;\;0<q<1,
+\end{eqnarray}
+\begin{eqnarray}\label{additive2.10}
+y(0)=0, \quad D_{q,0+}^\beta y(1)=a D_{q,0+}^\beta y(\tau)+\lambda
+\end{eqnarray}
+is
+\begin{eqnarray*}
+y(x)=\int\limits_0^1 G_q(x, s) f(x,y(x)) \mathrm{d}_q s+\lambda x^{\alpha-1}\frac{\Gamma_q(\alpha+\beta)}{\Gamma_q(\alpha)},
+\end{eqnarray*}
+where
+\[
+G_q(x, s) =
+\begin{cases}
+    \frac {d x^{\alpha - 1} (1 - qs)^{(\alpha - \beta - 1)}_q - a d x^{\alpha - 1}(\tau -qs)^{(\alpha - \beta - 1)}_q - (x - qs)^{(\alpha - 1)}_q}{\Gamma_q(\alpha)}, & 0 \leq s \leq \min\{x, \tau\} < 1, \\[5pt]
+    \frac{d x^{\alpha - 1} (1 - qs)^{(\alpha - \beta - 1)}_q -(x - qs)^{(\alpha - 1)}_q}{\Gamma_q(\alpha)}, & 0 \leq \tau \leq s \leq x \leq 1, \\[5pt]
+    \frac{d x^{\alpha - 1} (1 - qs)^{(\alpha - \beta - 1)}_q - a d x^{\alpha - 1} (\tau - qs)^{(\alpha - \beta - 1)}_q}{\Gamma_q(\alpha)}, & 0 \leq x \leq s \leq \tau \leq 1, \\[5pt]
+    \frac{d x^{\alpha - 1} (1 - qs)^{(\alpha - \beta - 1)}_q}{\Gamma_q(\alpha)}, & \max\{x, \tau\} \leq s \leq 1,
+\end{cases}
+\]
+for which
+$
+d = \left(1 - a \tau^{\alpha - \beta - 1}\right)^{-1},
+$
+$0 \leq \beta \leq 1$, $0 \leq a \leq 1$, $\lambda\geq\lambda_0>0$, $\tau \in (0,1)$, $a \tau^{\alpha-\beta-2} \leq 1-\beta$, $0 \leq \alpha-\beta-1$  and $f:[0,1] \times[0, \infty) \rightarrow[0, \infty).$
+
+In this work, we assume that the function
+\[
+f: [0,1] \times [0,\infty) \to [0,\infty)
+\]
+the following Caratheodory conditions are satisfied
+
+\((H1)\):
+\begin{enumerate}
+    \item[(i)] For every fixed \(t \in [0,\infty)\), the mapping \(x \mapsto f(x,t)\) is Lebesgue measurable on \([0,1]\);
+    \item[(ii)] For every fixed \(x \in [0,1]\), the mapping \(t \mapsto f(x,t)\) is continuous on \([0,\infty)\).
+\end{enumerate}
+
+
+\textbf{Theorem 1.}
+Assume that (H1) is satisfied and that there exists a real-valued function \(h(x) \in L[0,1]\) such that
+\begin{eqnarray*}
+|f(x,y) - f(x,z)| \leq h(x) |y - z|,
+\end{eqnarray*}
+for almost every   $x\in [0,1]$  and all $y, z \in [0,\infty)$.
+If
+\begin{eqnarray*}
+0 < \int\limits_0^1 G_q(s,s)\, h(s) \, d_qs < 1,
+\end{eqnarray*}
+then, the boundary value problem (BVP) defined by (1) and (2) on \([0,1]\) admits a unique positive solution.
+
+\textbf{Lemma 2.}
+Assume that condition (H1) holds and that there exist two nonnegative, real-valued functions \(m\) and \(n\) in \(L[0,1]\) such that
+\begin{eqnarray*}
+f(x, t) \leq n(x)+m(x) t, \quad
+\end{eqnarray*}
+for almost all $x \in[0,1]$ and all $t \in[0, \infty)$.
+Hence, the operator \(T: P \rightarrow P\), as defined in (Lemma 1), is completely continuous.
+
+
+\textbf{Theorem 2.}
+Assume that all the conditions of lemma 2 are satisfied. If
+$$
+\int\limits_0^1 G_q(s, s) m(s) \, \mathrm{d}_q s < 1,
+$$
+then the boundary value problem (1) and (2) admits at least one solution.
+
+
+\textbf{Acknowledgments:}
+This research is funded by the Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan (Grant no.
+AP22687134, 2024-2026)
+
+
+\begin{thebibliography}{00}\label{ref:ref}
+\bibitem {CK2000}  P.~Cheung and V.~Kac, \emph{Quantum calculus} (Inc., Ann Arbor, MI, USA, 2000).
+\bibitem {E2002} T.~Ernst, Doctoral thesis, A new method of $q$-calculus, Uppsala university, Uppsala 2002.
+\bibitem {A1969} W.~Al-Salam, \textquotedblleft Some fractional $q$-integrals and $q$-derivatives,\textquotedblright Proc. Edinb. Math. Soc. \textbf{15}, 135--140 (1966/1967).
+\bibitem {AM2012}  M.H.~Annaby and Z.S.~Mansour, \emph{$q$-fractional calculus and equations} (Springer, Heidelberg, 2012).
+\bibitem {YU2013}   C.~Yu and J.~Wang,  \textquotedblleft Positive solutions of nonlocal boundary value problem for high-order nonlinear fractional q-difference equations,\textquotedblright B Abstr. Appl. Anal., Article ID928147, (2013).
+\end{thebibliography}
+\end{document}
+
+
+

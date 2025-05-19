@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Актуальные вопросы междисциплинарных научных исследований}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Караганда, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+
+        \vspace{0.4cm}
+        \large\@author
+
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1} Институт математики и математического моделирования, Алматы, Казахстан\\
+          E-mail: yu-shpadi@yandex.kz\\}
+%          \textsuperscript{2}Название университета, город, страна\\
+%          E-mail: test@example.com\\
+%          \textsuperscript{3}Название университета, город, страна\\
+%          E-mail: test@example.com\\}
+    \end{center}
+}
+\makeatother
+
+% Paper info
+\title{ТЕМПЕРАТУРА КОНТАКТА ВЫКЛЮЧАТЕЛЯ ПОД ДЕЙСТВИЕМ ТЕПЛОВОГО ПОТОКА ЭЛЕКТРИЧЕСКОЙ ДУГИ, ПОДЧИНЯЮЩЕГОСЯ ЗАКОНУ НЬЮТОНА}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{Шпади Ю.Р.\textsuperscript{1}} %, Второй автор\textsuperscript{2}, Третий автор\textsuperscript{3}}
+
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Рассматривается задача прогрева электрода коммутационного аппарата под воздействием электрической дуги и внутреннего источника тепла. Математическая модель базируется на квазистационарном уравнении теплопроводности со сферической симметрией 
+\begin{equation}\label{Shpadi-eq1}
+\frac{1}{r^2}\frac{\partial}{\partial {r}}\left(r^2 \lambda(r,t,\theta)\frac{\partial {\theta}}{\partial{r}}\right) +\frac{q(r,t)}{r^4} = 0,\quad \theta = \theta(r,t),     
+\end{equation}
+заданном в области со свободной границей $\Omega = \left\{ (r,t) | 0<b<r<\alpha(t) < \infty, \ 0<t<t_a \right\}$, при краевых условиях:
+\begin{equation}\label{Shpadi-eq2}
+  \alpha(0) = b,
+\end{equation}
+\begin{equation}\label{Shpadi-eq3}
+  -\left. \lambda(r,t;\theta) \frac{\partial \theta}{\partial r} \right|_{r=b}  = h\left(\theta_{arc}(t)-\theta(b,t)\right),
+  \quad \theta_{arc}(t) > \theta((b,t), \ t\in[0,t_a],
+\end{equation}
+\begin{equation}\label{Shpadi-eq4}
+  \theta(\alpha(t),t) = \theta_{\alpha} (t),
+\end{equation}
+\begin{equation}\label{Shpadi-eq5}
+  -\left. \lambda(r,t;\theta) \frac{\partial \theta(r,t)}{\partial {r}} \right|_{r=\alpha(t)} = L(t;\theta_{\alpha} (t)) \frac{d \alpha(t)}{d t}.
+\end{equation}
+
+В начальный момент $t=0$ область $\Omega$ ввиду условия \eqref{Shpadi-eq2} вырождена (обращается в точку).  Для расчета закона движения свободной границы $\alpha(t)$  и температурного поля $\theta(r,t)$  внутри области  $\Omega$  задача \eqref{Shpadi-eq1} –- \eqref{Shpadi-eq5} редуцируется к эквивалентной системе двух нелинейных интегральных уравнений с переменными пределами интегрирования.     
+
+Доказано, что при условии непрерывности и положительности функций $\lambda(r,t;\theta)$ , $P(t)$, $q(r,t)$ , $L(t;\theta_{\alpha}(t)$ а также непрерывности функции $\theta_{\alpha}(t)$  и липшицевости функции $\lambda(r,t;\theta)$  по переменной $\theta$, система интегральных уравнений однозначно разрешима и ее решение является решением краевой задачи \eqref{Shpadi-eq1} –- \eqref{Shpadi-eq5}. 
+
+Разработан численный алгоритм итеративного решения системы интегральных уравнений. Проведен вычислительный эксперимент на тестовой краевой задаче с точным аналитическим решением и представлены результаты сходимости итераций в метрике непрерывных функций полных пространств.  
+
+\textbf{Благодарности:}
+ Данное исследование финансируется Комитетом науки Министерства науки и высшего образования Республики Казахстан (грант № АР19675480).
+
+\textbf{Ключевые слова:} нелинейное уравнение теплопроводности, сферическая симметрия, краевые условия, проблема Стефана, интегральные уравнения, электрические контакты.
+
+% BIBLIOGRAPHY (can be omitted)
+% Please use the following commands to format the reference list
+\end{document}
+
+

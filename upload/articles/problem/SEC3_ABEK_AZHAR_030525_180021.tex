@@ -1,0 +1,243 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\newtheorem{theorem}{\indent Theorem}
+\newtheorem{lemma}{\indent Lemma}
+\newtheorem{proposition}{\indent Proposition}
+\newtheorem{corollary}{\indent Corollary}
+\newtheorem{definition}{\indent Definition}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Актуальные вопросы междисциплинарных научных исследований}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Караганда, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+
+        \vspace{0.4cm}
+        \large\@author
+
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1}L.N. Gumilyov Eurasian National University, Astana, Kazakhstan\\
+          E-mail: azhar.abekova@gmail.com\\
+          \textsuperscript{2}Institute of Mathematics of the
+ Czech Academy of Sciences, Praha, Czech Republic\\
+          E-mail: gogatish@math.cas.cz\\
+          \textsuperscript{3}L.N. Gumilyov Eurasian National University, Astana, Kazakhstan\\
+          E-mail: bokayev2011@yandex.kz\\
+          \textsuperscript{4}Kirikkale University, Kirikkale, Turkey\\
+          E-mail: tugceunver@kku.edu.tr\\}
+          
+    \end{center}}
+
+\makeatother
+
+% Paper info
+\title{WEIGHTED INEQUALITIES FOR SUPERPOSITION OF OPERATORS}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{Abek A.N.\textsuperscript{1}, Gogatishvili A.\textsuperscript{2}, Bokayev N.A\textsuperscript{3}, Unver T.\textsuperscript{4}}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+In this paper we consider the superposition of three operators: Copson, Hardy and Tandori. Denote by $\mathfrak{M}^+(0,\infty)$ the set of all non-negative measurable functions on $(0,\infty)$.
+%and $\mathfrak{M}^{\uparrow}(0,\infty)$ is the class of non-decreasing elements of $\mathfrak{M}^+(0,\infty)$.
+
+Let $1\leq p<\infty$, $0<q<\infty$, $u$, $v$ and $w$ are weights, (i.e. locally integrable non-negative functions on $(0,\infty)$),  $\varphi$ is strictly increasing function $(0,\infty)$, and $\frac{\varphi}{U}$ is decreasing on $(0,\infty)$,  where
+\[U(s)=\int_{0}^{s}u(t)dt\]
+
+Our goal in this paper is to characterize  the following inequality
+\begin{equation}\Bigg(\int_{0}^{\infty}\left({\sup_{t<s<\infty}}\frac{1}{\varphi(s)}\int_{0}^{s} \left(\int\limits_{\tau}^{\infty}h(y)dy\right)u(\tau)d\tau\right)^q w(t) dt\Bigg)^{\frac{1}{q}}\leq C\Big(\int\limits_{0}^{\infty}h^p(s)v(s)ds\Big)^{\frac{1}{p}} \label{1}
+\end{equation}
+for all $h\in \mathfrak{M}^+(0,\infty)$.
+
+Using the Fubini theorem  for non-negative functions, we have
+\begin{eqnarray*}
+\int\limits_{0}^{s}u(\tau)\int\limits_{\tau}^{\infty}h(t)dt dy&=& \int\limits_{0}^{s}U(\tau)h(\tau)+U(s)\int\limits_{s}^{\infty}h(\tau)d\tau. \label{2}
+\end{eqnarray*}
+
+Therefore the inequality (\ref{1}) is equivalent with following inequality
+
+\begin{equation}\left(\int\limits_{0}^{\infty}\left({\sup_{t<s<\infty}}\frac{1}{\varphi(s)}\left(\int\limits_{0}^{s} U(\tau) h(\tau)d\tau+U(s)\int\limits_{s}^{\infty}h(\tau)d\tau \right)\right)^qw(t)dt\right)^{\frac{1}{q}}\leq C\left(\int\limits_{0}^{\infty}h^p(\tau)v(\tau)d\tau\right)^{\frac{1}{p}}.
+\label{3}  
+\end{equation}
+
+Throughout the paper, we always denote by $c$ or $C$ a positive constant which is
+independent of the main parameters, but it may vary from line to line. However a constant
+with subscript such as $С_1$ does not change in different occurrences.
+
+\begin{theorem} \label{t main}
+Let  $q\in(0,\infty)$, $p\in(1,\infty)$, and let $u, v, w$ be weights on $(0,\infty)$. $\varphi$ is $U$ -quasiconcave function on $(0, \infty)$, Then there exists a constant $C>0$ such that the inequality (\ref{3}) holds for all $f\in \mathfrak{M}^+(0,\infty)$  if and only if one of the following conditions is satisfied:
+
+\rm(i) $1 < p \le q $,
+\begin{equation*}
+C_1 :=  \sup_{ t \in (0, \infty)} \left(\int_0^\infty \frac{w(s)ds}{(\varphi(s)+\varphi(t))^q}\right)^{\frac{1}{q}} \left(\int_0^\infty \frac{ U^{p'}(t) U^{p'}(s)}{ U^{p'}(s) +U^{p'}(t)} v^{1-p'}(s)ds \right)^{\frac{1}{p'}}<\infty,
+\end{equation*}
+
+\rm(ii)  $1<p$, $q<p$,
+\begin{equation*}
+C_2 :=  \left(\int_0^\infty \left(\int_0^\infty \frac{w(s)ds}{(\varphi(s)+\varphi(t))^q}\right)^{\frac{r}{q}}d\nu_p(t)\right)^{\frac{1}{r}}<\infty,
+\end{equation*}
+where $\nu_p$ is the representation measure of
+\[
+\varphi^r(t)\sup_{s\in(t,\infty)}\frac{1}{\varphi^r(s)}\left(\int_0^\infty \frac{ U^{p'}(\tau) U^{p'}(s)}{ U^{p'}(s) +U^{p'}(\tau)} v^{1-p'}(\tau)d\tau \right)^{\frac{r}{p'}},\]
+i.e.
+\[ \varphi^r(t)\sup_{s\in(t,\infty)}\frac{1}{\varphi^r(s)}\left(\int_0^\infty \frac{ U^{p'}(\tau) U^{p'}(s)}{ U^{p'}(s) +U^{p'}(\tau)} v^{1-p'}(\tau)d\tau \right)^{\frac{r}{p'}} =
+\int_0^\infty \frac{\varphi^r(t)}{\varphi^{r}(s) +\varphi^{r}(t)} \nu_p(s)ds.
+\]
+
+Moreover, the best constant in the inequality (\ref{3}) satisfies
+\begin{displaymath}
+C\approx \left\{ \begin{array}{ll}
+C_1 & \textrm{in case  (i),}\\
+C_2 & \textrm{in case  (ii).}\\
+\end{array} \right.
+\end{displaymath}
+\end{theorem}
+
+The proof of Theorem \eqref{t main} is essentially based on the following theorem.
+
+\begin{theorem}\label{disc.char. 3}
+Let  $q\in(0,\infty)$, $p\in(1,\infty)$, and let $u, v, w$ be weights on $(0,\infty)$. $\varphi$ is $U$ -quasiconcave function on $(0, \infty)$, Then there exists a constant $C>0$ such that the inequality (\ref{3}) holds for all $f\in \mathfrak{M}^+(0,\infty)$ if and only if one of the following conditions is satisfied:
+
+\rm(i) $1<p \leq q$,
+\begin{align*}
+A_1& := \sup_{k\in Z} \sup_{  x_k\le t \le  x_{k+1}} \frac{G(t)}{\varphi(t)} \left(\int_{x_k}^t U^{p'}(s) v^{1-p'}(s)ds +U^{p'}(t)\int_t^{x_{k+1}} v^{1-p'}(s)ds, \right)^{\frac{1}{p'}}<\infty,
+\end{align*}
+
+\rm(ii)  $1 < p $,  $q<p$,
+
+\begin{equation*}
+A_2 := \left(\sum_{k\in Z} \left(\sup_{  x_k\le  t \le  x_{k+1}} \frac{G(t)}{\varphi(t)} \left(\int_{x_k}^t U^{p'}(s) v^{1-p'}(s)ds +U^{p'}(t)\int_t^{x_{k+1}} v^{1-p'}(s)ds \right)^{\frac{1}{p'}}\right)^r\right)^{\frac{1}{r}}<\infty,
+\end{equation*}
+where $\{x_k\}_{k=N}^{M+1}$ is discretization sequence for $G$ and
+\begin{equation*} \label{34}
+G(t)=\int_{0}^{t}w(s)ds+\varphi(t)\int_{t}^{\infty}\varphi^{-1}(s)w(s)ds.
+\end{equation*}
+
+Moreover, the best constant in the inequality (\ref{3}) satisfies
+\begin{displaymath}
+C\approx \left\{ \begin{array}{ll}
+A_1 & \textrm{in case  (i),}\\
+A_2 & \textrm{in case  (ii).}
+\end{array} \right.
+\end{displaymath}
+\end{theorem}
+
+We present the following definitions and auxiliary statements from \cite{1, 2, 3, 4, 5} that are used to prove the indicated theorems.
+
+\begin{definition}\label{def13} [2]
+Let $\varphi$ be a continuous strictly increasing function on
+$[0,\infty)$ such that $\varphi(0)=0$ and $\lim_{t\rightarrow\infty}\varphi(t)=\infty$. Then we say that $\varphi$ is admissible.
+\end{definition}
+
+Let $\varphi$ be an admissible function. We say that a function $h$ is $\varphi$-quasiconcave if $h$ is equivalent to an increasing function on $[0,\infty)$ and $\frac{h}{\varphi}$ is equivalent to a decreasing function on $(0,\infty)$. We say that a $\varphi$-quasiconcave function $h$ is non-degenerate if
+\begin{equation}\lim_{t\rightarrow 0+}h(t)
+=\lim_{t\rightarrow\infty}\frac{1}{h(t)}= \lim_{t\rightarrow\infty}\frac{h(t)}{\varphi(t)} =\lim_{t\rightarrow 0+}\frac{\varphi(t)}{h(t)}=0.
+\end{equation}
+
+The family of non-degenerate $\varphi$ -quasiconcave functions will be denoted by $\Omega_\varphi$.
+
+\begin{definition}\label{def14} [3] Assume that $\varphi$ is admissible and $h \in \Omega_{\varphi}$. We say that $\left\{\mu_k\right\}_{k \in \mathbb{Z}}$ is a discretizing sequence for $h$ with respect to $\varphi$ if
+
+(i) $\mu_0=1$ and $\varphi\left(\mu_k\right)\upuparrows$;
+
+(ii) $h\left(\mu_k\right) \upuparrows$ and $\frac{h\left(\mu_k\right)}{\varphi\left(\mu_k\right)}\downdownarrows$;
+
+(iii) there is a decomposition $\mathbb{Z}=\mathbb{Z}_1 \cup \mathbb{Z}_2$ such that $\mathbb{Z}_1 \cap \mathbb{Z}_2=\emptyset$ an for every $t \in\left[\mu_k, \mu_{k+1}\right]$,
+$$
+\begin{gathered}
+h\left(\mu_k\right) \approx h(t) \quad \text { if } \quad k \in \mathbb{Z}_1, \\
+\frac{h\left(\mu_k\right)}{\varphi\left(\mu_k\right)} \approx \frac{h(t)}{\varphi(t)} \quad \text { if } \quad k \in \mathbb{Z}_2 .
+\end{gathered}
+$$
+\end{definition}
+
+\begin{definition}\label{def15}
+Let $\varphi$ be an admissible function and let $\nu$ be a non-negative
+Borel measure on $[0,\infty)$. We say that the function $h$ defined by
+$$
+h(t)=\varphi(t)\int_{[0,\infty)}\frac{d\nu(s)}{\varphi(s)+\varphi(t)},~~t\in(0,\infty),
+$$
+is the fundamental function of the measure $\nu$ with respect to
+$\varphi$. We will also say that $\nu$ is a representation measure of
+$h$ with respect to $\varphi$.
+
+We say that $\nu$ is non-degenerate if the following conditions are
+satisfied for every $t\in(0,\infty)$:
+$$\int_{[0,\infty)}\frac{d\nu(s)}{\varphi(s)+\varphi(t)}<\infty,~t\in (0,\infty) ~~~\mbox{and}~~~ \int_{[0,1]}\frac{d\nu(s)}{\varphi(s)}=\int_{[1,\infty)}d\nu(s)=\infty.$$
+\end{definition}
+
+\begin{lemma}\label{lem6} 
+Assume that $\varphi$ is an admissible function, $f\in\Omega_\varphi$,
+$\nu$ is a non-negative non-degenerate Borel measure on $[0,\infty)$ and
+$h$ is the fundamental function of $\nu$ with respect to $\varphi$. If
+$\{x_k\}$ is a discretizing sequence for $h$ with respect to
+$\varphi$, then
+$$ \int_{[0,\infty)}\frac{f(t)}{\varphi(t)}d\nu(t)\approx
+\sum_{k\in Z}\left(\frac{f(x_k)}{\varphi(x_k)}\right)
+\varphi(x_k). $$
+\end{lemma}
+
+\begin{lemma}\label{lem3}  \label{discr}
+Assume that $\varphi$ is an admissible function, $\nu$ is a nondegenerate nonnegative Borel measure on $[0,\infty)$, $h$ is the fundamental function of $\nu$ and $f\in\mathfrak{M}^+(0,\infty)$. If $\{x_k\}$ is a discretizing sequence for $h$ with respect to $\varphi$, then
+\begin{align*}
+\int\limits_{[0,\infty)}\sup_{y\in(0,\infty)}\frac{|f(y)|}{\varphi(x)+\varphi(y)}d\nu(x)&
+\approx\sum_{k\in\mathbb{Z}} \left(\sup_{y\in(0,\infty)} \frac {|f(y)|}{\varphi(x_k)+\varphi(y)}\right)\varphi(x_k)\\
+&\approx\sum_{k\in\mathbb{Z}}\left(\varphi^{-1}(x_k)\sup_{x_{k-1}\leq y<x_k}|f(y)|+\sup_{x_{k}\leq y<x_{k+1}}|f(y)|\varphi^{-1}(y)\right)h(x_k)\\
+&\approx\sum_{k\in\mathbb{Z}}\sup_{x_{k}\leq y<x_{k+1}}|f(y)|\varphi^{-1}(y)h(y).
+\end{align*}
+\end{lemma}
+
+\textbf{Acknowledgement:}
+ The research of A.N. Abek, A.Gogatishvili, was supported by the grant Ministry of Science and Higher Education of the Republic of Kazakhstan (project no: AP22686420).
+
+\begin{thebibliography}{00}\label{ref:ref}
+
+\bibitem{1} Evans W.D., Gogatishvili A., Opic B., “Weighted Inequalities Involving p-quasiconcave Operators”, World Scientific Publishing Co. Pte. Ltd., Hackensack, NJ, 2018.
+\bibitem{2} Gogatishvili A., Mustafayev R.CH., Persson L.E., “Some New Iterated Hardy-Type Inequalities”, Journal of Function Spaces and Applications, (2012), 1-30.
+\bibitem{3} Gogatishvili A., Pick L., “Discretization and anti-discretization of rearrangement-invariant norms”, Publ.Mat., Bare, (2003), 311-358.
+\bibitem{4} Гогатишвили А., Степанов В.Д., “Редукционные теоремы для весовых интегральных неравенств на конусе монотонных функций”, УсМатНаук, 2013.
+\bibitem{5} Bokayev N.A., Gogatishvili A., Abek A.N., “Cones of monotone functions generated by a generalized fractional maximal function”, TWMS,J.Pure Appl. Math., 15:1 (2024), 127-141.
+\end{thebibliography}
+\end{document}
+
+
+
