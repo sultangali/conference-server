@@ -1,0 +1,60 @@
+server {
+    server_name conference.buketov.edu.kz; 
+	#34.118.119.50;
+
+    root /var/www/conference; 
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+location /upload/ {
+    root /home/conference_buketov_edu_kz/conference-server;
+    autoindex on;
+    types {
+        application/pdf pdf;
+        application/octet-stream doc docx tex;
+    }
+    add_header Content-Disposition "attachment";
+}
+    
+    # Пример reverse proxy для Node.js (если требуется)
+    # location /api {
+    #     proxy_pass http://127.0.0.1:3000;
+    #     proxy_http_version 1.1;
+    #     proxy_set_header Upgrade $http_upgrade;
+    #     proxy_set_header Connection 'upgrade';
+    #     proxy_set_header Host $host;
+    #     proxy_cache_bypass $http_upgrade;
+    # }
+location /api {
+    # Разрешить CORS из конкретного домена
+    add_header 'Access-Control-Allow-Origin' 'https://conference.buketov.edu.kz' always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+    add_header 'Access-Control-Allow-Headers' 'Content-Type, Authorization, X-Requested-With' always;
+
+    if ($request_method = OPTIONS) {
+        return 204; # пустой ответ без тела
+    }
+
+    proxy_pass http://127.0.0.1:5000;
+}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/conference.buketov.edu.kz/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/conference.buketov.edu.kz/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = conference.buketov.edu.kz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name conference.buketov.edu.kz;
+    return 404; # managed by Certbot
+}
